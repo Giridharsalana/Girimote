@@ -161,7 +161,7 @@ body {
 
 @media (min-width: 48rem) {
 	#container {
-		transform: scale(0.725rem);
+		transform: scale(0.725);
 	}
 }
 
