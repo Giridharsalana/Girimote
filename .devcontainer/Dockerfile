@@ -38,9 +38,9 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearm
 # Add Fish shell to valid shells
 RUN echo /usr/bin/fish >> /etc/shells
 
+# Install Sudo 
 RUN apt-get update && apt-get install -y sudo \
     && usermod -aG sudo $USERNAME
-
 
 # Create a non-root developer user (codespace user)
 ARG USERNAME=codespace
