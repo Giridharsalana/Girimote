@@ -27,9 +27,24 @@ class MyApp extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               elevation: 0,
               backgroundColor: kPrimaryColor,
+              foregroundColor: Colors.white,
+              textStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.2,
+              ),
               shape: const StadiumBorder(),
               maximumSize: const Size(double.infinity, 56),
               minimumSize: const Size(double.infinity, 56),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              foregroundColor: kPrimaryColor,
+              textStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
           inputDecorationTheme: const InputDecorationTheme(
@@ -42,6 +57,15 @@ class MyApp extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(30)),
               borderSide: BorderSide.none,
+            ),
+          ),
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(color: Colors.black87, fontSize: 16),
+            bodyMedium: TextStyle(color: Colors.black87, fontSize: 14),
+            titleLarge: TextStyle(
+              color: Colors.black87,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
           )),
       home: const WelcomeScreen(),

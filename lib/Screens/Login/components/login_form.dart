@@ -38,7 +38,24 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            "Welcome Back",
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            "Login to your account",
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Colors.grey[600],
+                ),
+          ),
+          const SizedBox(height: defaultPadding * 2),
           TextFormField(
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
@@ -46,7 +63,8 @@ class LoginForm extends StatelessWidget {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             decoration: const InputDecoration(
-              hintText: "Your email",
+              labelText: "Email",
+              hintText: "Enter your email",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.email),
@@ -61,7 +79,8 @@ class LoginForm extends StatelessWidget {
               obscureText: true,
               cursorColor: kPrimaryColor,
               decoration: const InputDecoration(
-                hintText: "Your password",
+                labelText: "Password",
+                hintText: "Enter your password",
                 prefixIcon: Padding(
                   padding: EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),
@@ -69,7 +88,7 @@ class LoginForm extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: defaultPadding / 2),
+          const SizedBox(height: defaultPadding),
           Hero(
             tag: "login_btn",
             child: ElevatedButton(

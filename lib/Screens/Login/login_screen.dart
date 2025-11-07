@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:girimote/responsive.dart';
 import '../../components/background.dart';
+import '../../constants.dart';
 import 'components/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -15,14 +16,12 @@ class LoginScreen extends StatelessWidget {
           desktop: Row(
             children: [
               Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 450,
-                      child: LoginForm(),
-                    ),
-                  ],
+                child: Center(
+                  child: Container(
+                    constraints: const BoxConstraints(maxWidth: 450),
+                    padding: const EdgeInsets.all(defaultPadding * 2),
+                    child: LoginForm(),
+                  ),
                 ),
               ),
             ],
@@ -40,20 +39,13 @@ class MobileLoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Row(
-          children: [
-            const Spacer(),
-            Expanded(
-              flex: 8,
-              child: LoginForm(),
-            ),
-            const Spacer(),
-          ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Center(
+        child: SingleChildScrollView(
+          child: LoginForm(),
         ),
-      ],
+      ),
     );
   }
 }

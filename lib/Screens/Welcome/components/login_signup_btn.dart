@@ -12,6 +12,23 @@ class LoginAndSignupBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Text(
+          "Get Started",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey[800],
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          "Login or create an account",
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey[600],
+          ),
+        ),
+        const SizedBox(height: 32),
         Hero(
           tag: "login_btn",
           child: ElevatedButton(
@@ -43,10 +60,12 @@ class LoginAndSignupBtn extends StatelessWidget {
             );
           },
           style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryLightColor, elevation: 0),
+            backgroundColor: kPrimaryLightColor,
+            foregroundColor: kPrimaryColor,
+            elevation: 0,
+          ),
           child: Text(
             "Sign Up".toUpperCase(),
-            style: const TextStyle(color: Colors.black),
           ),
         ),
       ],

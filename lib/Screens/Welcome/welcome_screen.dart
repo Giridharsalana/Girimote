@@ -14,20 +14,21 @@ class WelcomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Responsive(
             desktop: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Expanded(
-                  child: WelcomeImage(),
+                  child: Padding(
+                    padding: EdgeInsets.all(32.0),
+                    child: WelcomeImage(),
+                  ),
                 ),
                 Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      SizedBox(
-                        width: 450,
-                        child: LoginAndSignupBtn(),
-                      ),
-                    ],
+                  child: Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 400),
+                      padding: const EdgeInsets.all(32.0),
+                      child: const LoginAndSignupBtn(),
+                    ),
                   ),
                 ),
               ],
@@ -47,21 +48,16 @@ class MobileWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const WelcomeImage(),
-        Row(
-          children: const [
-            Spacer(),
-            Expanded(
-              flex: 8,
-              child: LoginAndSignupBtn(),
-            ),
-            Spacer(),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const WelcomeImage(),
+          const SizedBox(height: 20),
+          const LoginAndSignupBtn(),
+        ],
+      ),
     );
   }
 }

@@ -29,7 +29,24 @@ class SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            "Get Started",
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor,
+                ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            "Create your account",
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Colors.grey[600],
+                ),
+          ),
+          const SizedBox(height: defaultPadding * 2),
           TextFormField(
             controller: nameController,
             keyboardType: TextInputType.name,
@@ -37,7 +54,8 @@ class SignUpForm extends StatelessWidget {
             cursorColor: kPrimaryColor,
             onSaved: (name) {},
             decoration: const InputDecoration(
-              hintText: "Your name",
+              labelText: "Name",
+              hintText: "Enter your full name",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.person),
@@ -52,7 +70,8 @@ class SignUpForm extends StatelessWidget {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             decoration: const InputDecoration(
-              hintText: "Your email",
+              labelText: "Email",
+              hintText: "Enter your email",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.email),
@@ -67,7 +86,8 @@ class SignUpForm extends StatelessWidget {
               obscureText: true,
               cursorColor: kPrimaryColor,
               decoration: const InputDecoration(
-                hintText: "Your password",
+                labelText: "Password",
+                hintText: "Enter your password",
                 prefixIcon: Padding(
                   padding: EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),
@@ -75,7 +95,7 @@ class SignUpForm extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: defaultPadding / 2),
+          const SizedBox(height: defaultPadding),
           ElevatedButton(
             onPressed: () {
               FirebaseAuth.instance

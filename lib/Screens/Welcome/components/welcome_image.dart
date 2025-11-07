@@ -12,10 +12,25 @@ class WelcomeImage extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "Welcome to Girimote",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          "GIRIMOTE",
+          style: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.bold,
+            color: kPrimaryColor,
+            letterSpacing: 2,
+          ),
         ),
-        const SizedBox(height: defaultPadding * 2),
+        const SizedBox(height: 12),
+        Text(
+          "Smart Home Control",
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey[600],
+            letterSpacing: 1,
+          ),
+        ),
+        const SizedBox(height: defaultPadding * 3),
         Row(
           children: [
             const Spacer(),
