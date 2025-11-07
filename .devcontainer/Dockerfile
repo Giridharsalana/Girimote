@@ -3,12 +3,11 @@ FROM ubuntu:22.04
 
 # Switch to root to install packages
 USER root
-
-# Avoid prompts during install
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install essential dev tools
+# Install essential dev tools + sudo
 RUN apt-get update && apt-get install -y \
+    sudo \
     curl \
     git \
     wget \
@@ -38,19 +37,16 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearm
 # Add Fish shell to valid shells
 RUN echo /usr/bin/fish >> /etc/shells
 
-# Create a non-root developer user (codespace user)
+# Create non-root developer user and give passwordless sudo
 ARG USERNAME=codespace
 ARG UID=1000
 ARG GID=1000
 RUN groupadd -g $GID $USERNAME \
     && useradd -m -u $UID -g $GID -s /usr/bin/fish $USERNAME \
-    && chown -R $USERNAME:$USERNAME /home/$USERNAME
+    && chown -R $USERNAME:$USERNAME /home/$USERNAME \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Install Sudo 
-RUN apt-get update && apt-get install -y sudo \
-    && usermod -aG sudo $USERNAME
-
-# Setup User
+# Switch to non-root user
 USER $USERNAME
 WORKDIR /workspace
 
@@ -75,8 +71,8 @@ RUN mkdir -p $ANDROID_HOME/cmdline-tools && \
     unzip sdk.zip -d $ANDROID_HOME/cmdline-tools && \
     mv $ANDROID_HOME/cmdline-tools/cmdline-tools $ANDROID_HOME/cmdline-tools/latest && \
     rm sdk.zip && \
-    yes | sdkmanager --licenses && \
-    sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+    yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses && \
+    $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
 # Accept Flutter licenses
 RUN yes | flutter doctor --android-licenses
