@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+	<text x="50%" y="50%" fill="green" font-size="40px" text-anchor="middle" dominant-baseline="middle">
+		Giri
+		<animate attributeName="fill" values="orange;blue;green" dur="3s" repeatCount="indefinite" />
+	</text>
+	<circle cx="50%" cy="50%" r="38" fill="white" fill-opacity="0" stroke="green" stroke-width="4" text-anchor="middle"
+		dominant-baseline="middle" />
+	<circle cx="50%" cy="50%" r="42" fill="white" fill-opacity="0" stroke="blue" stroke-width="4" text-anchor="middle"
+		dominant-baseline="middle" />
+	<circle cx="50%" cy="50%" r="46" fill="white" fill-opacity="0" stroke="orange" stroke-width="4"
+		dominant-baseline="middle" />
+</svg>
