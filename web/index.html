@@ -34,19 +34,15 @@
 
   <title>Girimote</title>
   <link rel="manifest" href="manifest.json">
-
-  <script src="flutter.js" defer></script>
 </head>
 
 <body>
   <script>
+    {{flutter_js}}
+    {{flutter_build_config}}
+    
     window.addEventListener('load', function (ev) {
-      // Download main.dart.js
-      _flutter.loader.load({
-        serviceWorkerSettings: {
-          serviceWorkerVersion: {{flutter_service_worker_version}},
-        },
-      });
+      _flutter.loader.load();
     });
   </script>
 </body>
