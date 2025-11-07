@@ -42,15 +42,15 @@ RUN echo /usr/bin/fish >> /etc/shells
 ARG USERNAME=codespace
 ARG UID=1000
 ARG GID=1000
+RUN groupadd -g $GID $USERNAME \
+    && useradd -m -u $UID -g $GID -s /usr/bin/fish $USERNAME \
+    && chown -R $USERNAME:$USERNAME /home/$USERNAME
 
 # Install Sudo 
 RUN apt-get update && apt-get install -y sudo \
     && usermod -aG sudo $USERNAME
 
-RUN groupadd -g $GID $USERNAME \
-    && useradd -m -u $UID -g $GID -s /usr/bin/fish $USERNAME \
-    && chown -R $USERNAME:$USERNAME /home/$USERNAME
-
+# Setup User
 USER $USERNAME
 WORKDIR /workspace
 
