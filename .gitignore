@@ -17,3 +17,8 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+
+# Build directory - ignore all except web build
+build/
+!build/web/
+!build/web/**

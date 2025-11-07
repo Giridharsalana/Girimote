@@ -39,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -50,6 +52,13 @@ jobs:
         with:
           name: release-web
           path: build/web
+      - name: Commit web build to repository
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -f build/web
+          git commit -m "Auto-build: Update web build [skip ci]" || echo "No changes to commit"
+          git push
 
   build-linux:
     name: Build Linux
